@@ -1,0 +1,20 @@
+extends layout
+
+block page 
+  - var menu = 'index'
+block content
+  if (!(articles.length === 0)) 
+    each article, index in articles
+      div
+        h2
+          a(href="/articles/#{article.slug}")= article.title
+  else
+    if((articles.length === 0) && adminss)
+        p
+        | Nothing to display. Add a new 
+        a(href="/post") article
+        |.
+    else
+        | There's no published content yet. 
+        a(href="/login") Log in
+        |  to post and publish.
